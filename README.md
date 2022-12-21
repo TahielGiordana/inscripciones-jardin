@@ -1,70 +1,19 @@
-# Getting Started with Create React App
+El objetivo del siguiente proyecto es facilitar el proceso de inscripción de un Jardín de Infantes.
+El sistema debe recibir el listado de postulantes en formato csv, y ordenarlo en base a la distancia entre el jardín y su domicilio.
+Para esto el sistema deberá validar las direcciones, calcular la distancia hasta el jardín y crear un listado de alumnos priorizando los que se encuentran más cercanos al jardín.
+Como hay un límite de inscripciones, el resto de alumnos deben ubicarse en una lista de excedentes en caso de que se abra una vacante.
+Además, es deseable que se muestren las direcciones de los alumnos en un mapa.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Planificación:
 
-## Available Scripts
-
-In the project directory, you can run:
-
-### `npm start`
-
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
-
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+1. Permitir al usuario la carga del listado
+2. Parsear el archivo csv
+3. Validar las direcciones
+4. Calcular la distancia de cada alumno al jardín
+5. Ordenar el listado por menor distancia
+6. Mostrar la lista de alumnos y la lista de excedentes
+7. Mostrar las ubicaciones en un mapa
+   //Opcional//
+8. Mover alumnos entre la lista de inscriptos y excedentes
+9. Mensaje de ayuda
+10. Listado con aquellos alumnos con direcciones no válidas
