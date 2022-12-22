@@ -18,7 +18,7 @@ export default function AddressMap(props) {
     <MapContainer
       center={[-34.54295340866218, -58.71187638934445]}
       zoom={14}
-      scrollWheelZoom={false}
+      scrollWheelZoom={true}
       style={{ height: "100vh" }}
     >
       <TileLayer
