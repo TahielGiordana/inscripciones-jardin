@@ -17,3 +17,6 @@ Planificación:
 8. Mover alumnos entre la lista de inscriptos y excedentes
 9. Mensaje de ayuda
 10. Listado con aquellos alumnos con direcciones no válidas
+
+Modelo de CSV:
+Nombre | Apellido | DNI | Dirección
