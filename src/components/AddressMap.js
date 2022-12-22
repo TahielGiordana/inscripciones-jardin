@@ -13,7 +13,7 @@ L.Icon.Default.mergeOptions({
   shadowUrl: require("leaflet/dist/images/marker-shadow.png"),
 });
 
-export default function AddressMap() {
+export default function AddressMap(props) {
   return (
     <MapContainer
       center={[-34.54295340866218, -58.71187638934445]}
@@ -25,11 +25,28 @@ export default function AddressMap() {
         attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
       />
-      <Marker position={[-34.54295340866218, -58.71187638934445]}>
-        <Popup>
-          A pretty CSS3 popup. <br /> Easily customizable.
-        </Popup>
+      <Marker position={[props.home.lat, props.home.lon]}>
+        <Popup style={{ filter: "hue-rotate(120deg)" }}>Home</Popup>
       </Marker>
+      {props.studentsList.map((student) => {
+        const dir = student["ubicacion"];
+        return (
+          <Marker position={[dir.lat, dir.lon]}>
+            <Popup>
+              {student["nombre"] +
+                " " +
+                student["apellido"] +
+                " - " +
+                student["dni"]}
+              <br />
+              {student["direccion"] +
+                " - " +
+                student["distancia"].toFixed(2) +
+                " Km"}
+            </Popup>
+          </Marker>
+        );
+      })}
     </MapContainer>
   );
 }
