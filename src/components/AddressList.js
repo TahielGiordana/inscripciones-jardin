@@ -1,5 +1,13 @@
 import React, { useState } from "react";
-import { Form, ListGroup } from "react-bootstrap";
+import {
+  Button,
+  Col,
+  Container,
+  Form,
+  ListGroup,
+  Row,
+  Stack,
+} from "react-bootstrap";
 
 export default function AddressList(props) {
   const handleChange = (e) => {
@@ -7,42 +15,89 @@ export default function AddressList(props) {
   };
 
   return (
-    <div className="address-list p-3">
-      <Form.Group className="mb-3">
-        <Form.Label>Cargar listado:</Form.Label>
-        {/* Carga del archivo csv con el listado de inscriptos*/}
-        <Form.Control type="file" accept=".csv" onChange={handleChange} />
-      </Form.Group>
-      <ListGroup as={"ol"} className="mb-3" numbered>
-        {/*Ordeno la lista por cercanía y renderizo la lista */}
-        {props.studentsList
-          .sort((a, b) => {
-            return a["distancia"] - b["distancia"];
-          })
-          .map((student) => (
-            <ListGroup.Item key={student["dni"]}>
-              <span>
-                <strong>{student["nombre"] + " " + student["apellido"]}</strong>
-                {" - " + student["dni"]}
-              </span>
-              <p>{student["direccion"] + " - " + student["localidad"]}</p>
-              <p>{student["distancia"].toFixed(2) + " Km"}</p>
-            </ListGroup.Item>
-          ))}
-      </ListGroup>
-      <p>No se pudo validar la dirección:</p>
-      <ListGroup as={"ol"}>
-        {props.errorsList.map((student) => (
-          <ListGroup.Item key={student["dni"]} className="text-danger">
-            <p>
-              <strong>{student["nombre"] + " " + student["apellido"]}</strong>
-              {" - " + student["dni"]}
-            </p>
-            <p>{student["direccion"]}</p>
-            <p>{student["localidad"]}</p>
-          </ListGroup.Item>
-        ))}
-      </ListGroup>
-    </div>
+    <Container
+      className="address-list p-2 "
+      style={{ maxHeight: "100vh", overflowY: "hidden", overflowX: "hidden" }}
+    >
+      <Stack>
+        <Form.Group className="mb-2">
+          <Form.Label className="text-light">Cargar listado:</Form.Label>
+          {/* Carga del archivo csv con el listado de inscriptos*/}
+          <Form.Control type="file" accept=".csv" onChange={handleChange} />
+        </Form.Group>
+        <Row>
+          {props.studentsList.length !== 0 ? (
+            <Col>
+              <p className="text-light">Listado por cercanía:</p>
+              <ListGroup
+                as={"ol"}
+                numbered
+                style={{
+                  maxHeight: "75vh",
+                  overflow: "auto",
+                }}
+              >
+                {/*Ordeno la lista por cercanía y renderizo la lista */}
+                {props.studentsList
+                  .sort((a, b) => {
+                    return a["distancia"] - b["distancia"];
+                  })
+                  .map((student) => (
+                    <ListGroup.Item key={student["dni"]}>
+                      <span>
+                        <strong>
+                          {student["nombre"] + " " + student["apellido"]}
+                        </strong>
+                        {" - " + student["dni"]}
+                      </span>
+                      <p>
+                        {student["direccion"] + " - " + student["localidad"]}
+                      </p>
+                      <p>{student["distancia"].toFixed(2) + " Km"}</p>
+                    </ListGroup.Item>
+                  ))}
+              </ListGroup>
+            </Col>
+          ) : (
+            <></>
+          )}
+          {props.errorsList.length !== 0 ? (
+            <Col>
+              <p className="text-light">No se encontró la dirección:</p>
+              <ListGroup
+                numbered
+                as={"ol"}
+                style={{
+                  maxHeight: "75vh",
+                  overflow: "auto",
+                }}
+              >
+                {props.errorsList.map((student) => (
+                  <ListGroup.Item
+                    key={student["dni"]}
+                    className="text-danger"
+                    style={{
+                      maxHeight: "75vh",
+                      overflow: "auto",
+                    }}
+                  >
+                    <span>
+                      <strong>
+                        {student["nombre"] + " " + student["apellido"]}
+                      </strong>
+                      {" - " + student["dni"]}
+                    </span>
+                    <p>{student["direccion"]}</p>
+                    <p>{student["localidad"]}</p>
+                  </ListGroup.Item>
+                ))}
+              </ListGroup>
+            </Col>
+          ) : (
+            <></>
+          )}
+        </Row>
+      </Stack>
+    </Container>
   );
 }

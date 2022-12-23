@@ -16,7 +16,7 @@ L.Icon.Default.mergeOptions({
 export default function AddressMap(props) {
   return (
     <MapContainer
-      center={[-34.54295340866218, -58.71187638934445]}
+      center={[props.home.lat, props.home.lon]}
       zoom={14}
       scrollWheelZoom={true}
       style={{ height: "100vh" }}

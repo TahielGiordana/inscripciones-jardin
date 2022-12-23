@@ -9,6 +9,11 @@
   box-sizing: border-box;
 }
 
+.App {
+  background-color: var(--bg-color);
+}
+
+/*
 body {
   min-height: 100vh;
   background-color: var(--bg-color);
@@ -25,4 +30,4 @@ body {
   width: 40%;
   max-width: 400px;
   height: 100vh;
-}
+}*/

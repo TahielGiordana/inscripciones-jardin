@@ -5,11 +5,12 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { useState } from "react";
 import Papa from "papaparse";
 import { calcularDistancia } from "./utils";
+import { Col, Container, Row } from "react-bootstrap";
 
 //Plaza
 const sampleHome = {
-  lat: -34.54295340866218,
-  lon: -58.71187638934445,
+  lat: -34.53424624654218,
+  lon: -58.69360771069819,
 };
 
 function App() {
@@ -64,14 +65,23 @@ function App() {
   };
 
   return (
-    <div className="App">
-      <AddressList
-        studentsList={studentsList}
-        errorsList={errorsList}
-        onFileChange={handleFileChange}
-      ></AddressList>
-      <AddressMap studentsList={studentsList} home={sampleHome}></AddressMap>
-    </div>
+    <Container className="App" fluid>
+      <Row>
+        <Col xs={8} lg={5}>
+          <AddressList
+            studentsList={studentsList}
+            errorsList={errorsList}
+            onFileChange={handleFileChange}
+          ></AddressList>
+        </Col>
+        <Col>
+          <AddressMap
+            studentsList={studentsList}
+            home={sampleHome}
+          ></AddressMap>
+        </Col>
+      </Row>
+    </Container>
   );
 }
 
