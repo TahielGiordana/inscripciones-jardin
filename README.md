@@ -3,6 +3,7 @@
 El objetivo de este proyecto es facilitar el proceso de inscripción de un Jardín de Infantes. El usuario debe cargar un archivo .csv con el listado de postulantes, los cuáles serán ordenados priorizando la cercanía a la institución y se mostrará su ubicación en un mapa.
 
 ## Índice
+
 1. [Subir Listado](#subir-listado)
 2. [Obtener Direcciones](#obtener-direcciones)
 3. [Calcular Distancia](#calcular-distancia)
@@ -28,10 +29,11 @@ Cada dirección es validada mediante el uso de la API [Georef](https://datosgoba
 ## Calcular Distancia
 
 Mediante la fórmula Haversine obtengo la distancia en kilómetros entre dos coordenadas :
+
 ```
 function calcularDistancia(lat1, lon1, lat2, lon2) {
   var R = 6371; // Radio de la tierra en kilómetros
-  var dLat = deg2rad(lat2 - lat1); 
+  var dLat = deg2rad(lat2 - lat1);
   var dLon = deg2rad(lon2 - lon1);
   var a =
     Math.sin(dLat / 2) * Math.sin(dLat / 2) +
@@ -48,18 +50,21 @@ function deg2rad(deg) {
   return deg * (Math.PI / 180); //Paso a radianes
 }
 ```
+
 Luego agrego el resultado al listado de postulantes.
 
 ## Mostrar Lista
+
 En el estado de la App se almacena la lista de postulantes cuyas direcciones fueron validadas, y además una lista de aquellos cuyas direcciones no pudieron encontrarse. Ambas se muestran mediante el uso de un ListGroup, donde cada ListGroup.Item representa los datos obtenidos de cada entrada.
 
-
 ## Mostrar Mapa
+
 El mapa se muestra mediante el uso de [Leaflet](https://leafletjs.com/) y [React Leaflet](https://react-leaflet.js.org/). Al cargar la página se crea un marcador indicando la posición del jardín. Luego, una vez se carga el listado, se crean marcadores dinámicamente en aquellas direcciones validadas.
 
 ## Planificación:
 
 ### Principal
+
 - [x] Permitir al usuario la carga del listado
 - [x] Parsear el archivo csv
 - [x] Validar las direcciones
@@ -67,7 +72,7 @@ El mapa se muestra mediante el uso de [Leaflet](https://leafletjs.com/) y [React
 - [x] Ordenar el listado por menor distancia
 - [x] Mostrar la lista de alumnos y la lista de errores
 - [x] Mostrar las ubicaciones en un mapa
-- [ ] Cambiar ubicación inicial
+- [x] Cambiar ubicación inicial
 
 ### Opcional
 
