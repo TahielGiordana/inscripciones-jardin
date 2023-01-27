@@ -77,4 +77,6 @@ El mapa se muestra mediante el uso de [Leaflet](https://leafletjs.com/) y [React
 ### Opcional
 
 - [x] Listado con aquellos alumnos con direcciones no válidas
-- [ ] Mensaje de ayuda
+- [x] Mensaje de ayuda
+- [ ] Obtener ubicación del usuario
+- [x] Almacenar la ubicación
