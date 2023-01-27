@@ -24,6 +24,15 @@ function App() {
 
   const handleHomeChange = (newHome) => {
     setHome(newHome);
+    studentsList.forEach(
+      (student) =>
+        (student["distancia"] = calcularDistancia(
+          newHome.lat,
+          newHome.lon,
+          student["ubicacion"].lat,
+          student["ubicacion"].lon
+        ))
+    );
   };
 
   const handleFileChange = async (e) => {
@@ -41,7 +50,6 @@ function App() {
               .then((res) => res);
             if (geoData.direcciones[0]) {
               const ubicacion = geoData.direcciones[0].ubicacion; //Almacena la primera dirección obtenida
-              console.log(geoData);
               const newEntry = {
                 nombre: item["Nombre"],
                 apellido: item["Apellido"],
