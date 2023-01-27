@@ -1,8 +1,9 @@
 import React from "react";
-import { MapContainer, Marker, Popup, TileLayer } from "react-leaflet";
+import { MapContainer, Marker, Popup, TileLayer, useMap } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 import "../react-leaflet.css";
 import L from "leaflet";
+import { Button, Container } from "react-bootstrap";
 
 delete L.Icon.Default.prototype._getIconUrl;
 
@@ -12,6 +13,13 @@ L.Icon.Default.mergeOptions({
   iconUrl: require("leaflet/dist/images/marker-icon.png"),
   shadowUrl: require("leaflet/dist/images/marker-shadow.png"),
 });
+
+//Update the map center
+function SetViewOnClick({ coords }) {
+  const map = useMap();
+  map.setView(coords, map.getZoom());
+  return null;
+}
 
 export default function AddressMap(props) {
   return (
@@ -47,6 +55,7 @@ export default function AddressMap(props) {
           </Marker>
         );
       })}
+      <SetViewOnClick coords={[props.home.lat, props.home.lon]} />
     </MapContainer>
   );
 }

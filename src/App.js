@@ -5,17 +5,26 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { useState } from "react";
 import Papa from "papaparse";
 import { calcularDistancia } from "./utils";
-import { Col, Container, Row } from "react-bootstrap";
-
-//Plaza
-const sampleHome = {
-  lat: -34.53424624654218,
-  lon: -58.69360771069819,
-};
+import { Button, Col, Container, Row } from "react-bootstrap";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faInfo,
+  faInfoCircle,
+  faMapLocationDot,
+} from "@fortawesome/free-solid-svg-icons";
+import SetHomeModal from "./components/SetHomeModal";
 
 function App() {
   const [studentsList, setStudentsList] = useState([]);
   const [errorsList, setErrorList] = useState([]);
+  const [home, setHome] = useState({
+    lat: -34.53424624654218,
+    lon: -58.69360771069819,
+  });
+
+  const handleHomeChange = (newHome) => {
+    setHome(newHome);
+  };
 
   const handleFileChange = async (e) => {
     const csvFile = e.target.files[0];
@@ -41,8 +50,8 @@ function App() {
                 localidad: item["Localidad"],
                 ubicacion: ubicacion,
                 distancia: calcularDistancia(
-                  sampleHome.lat,
-                  sampleHome.lon,
+                  home.lat,
+                  home.lon,
                   ubicacion.lat,
                   ubicacion.lon
                 ),
@@ -75,12 +84,22 @@ function App() {
           ></AddressList>
         </Col>
         <Col>
-          <AddressMap
-            studentsList={studentsList}
-            home={sampleHome}
-          ></AddressMap>
+          <AddressMap studentsList={studentsList} home={home}></AddressMap>
         </Col>
       </Row>
+      <Container
+        className="d-flex position-absolute top-0 end-0 gap-1 m-2 "
+        style={{ zIndex: 500, width: "auto" }}
+      >
+        <SetHomeModal setHome={handleHomeChange} />
+        <Button
+          variant="dark"
+          className="rounded-circle d-flex justify-content-center align-items-center"
+          style={{ width: "40px", height: "40px" }}
+        >
+          <FontAwesomeIcon icon={faInfo} />
+        </Button>
+      </Container>
     </Container>
   );
 }
