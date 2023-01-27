@@ -13,6 +13,7 @@ import {
   faMapLocationDot,
 } from "@fortawesome/free-solid-svg-icons";
 import SetHomeModal from "./components/SetHomeModal";
+import InfoModal from "./components/InfoModal";
 
 function App() {
   const [studentsList, setStudentsList] = useState([]);
@@ -100,13 +101,7 @@ function App() {
         style={{ zIndex: 500, width: "auto" }}
       >
         <SetHomeModal setHome={handleHomeChange} />
-        <Button
-          variant="dark"
-          className="rounded-circle d-flex justify-content-center align-items-center"
-          style={{ width: "40px", height: "40px" }}
-        >
-          <FontAwesomeIcon icon={faInfo} />
-        </Button>
+        <InfoModal />
       </Container>
     </Container>
   );
