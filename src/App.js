@@ -15,16 +15,26 @@ import {
 import SetHomeModal from "./components/SetHomeModal";
 import InfoModal from "./components/InfoModal";
 
+const getHome = () => {
+  let home = { lat: -34.534361277085296, lon: -58.6935997561191 };
+  if (localStorage.getItem("homeLat") && localStorage.getItem("homeLon")) {
+    home.lat = localStorage.getItem("homeLat");
+    home.lon = localStorage.getItem("homeLon");
+    return home;
+  } else {
+    return home;
+  }
+};
+
 function App() {
+  const [home, setHome] = useState(getHome());
   const [studentsList, setStudentsList] = useState([]);
   const [errorsList, setErrorList] = useState([]);
-  const [home, setHome] = useState({
-    lat: -34.53424624654218,
-    lon: -58.69360771069819,
-  });
 
   const handleHomeChange = (newHome) => {
     setHome(newHome);
+    localStorage.setItem("homeLat", newHome.lat);
+    localStorage.setItem("homeLon", newHome.lon);
     studentsList.forEach(
       (student) =>
         (student["distancia"] = calcularDistancia(
