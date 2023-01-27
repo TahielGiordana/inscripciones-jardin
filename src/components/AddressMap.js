@@ -39,7 +39,7 @@ export default function AddressMap(props) {
       {props.studentsList.map((student) => {
         const dir = student["ubicacion"];
         return (
-          <Marker position={[dir.lat, dir.lon]}>
+          <Marker position={[dir.lat, dir.lon]} key={student["dni"]}>
             <Popup>
               {student["nombre"] +
                 " " +
