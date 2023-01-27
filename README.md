@@ -77,6 +77,4 @@ El mapa se muestra mediante el uso de [Leaflet](https://leafletjs.com/) y [React
 ### Opcional
 
 - [x] Listado con aquellos alumnos con direcciones no válidas
-- [ ] Crear una lista de excedentes
-- [ ] Cambiar límite de lista de inscriptos
 - [ ] Mensaje de ayuda
