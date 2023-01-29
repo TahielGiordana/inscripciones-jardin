@@ -48,6 +48,8 @@ function App() {
 
   const handleFileChange = async (e) => {
     const csvFile = e.target.files[0];
+    setStudentsList([]);
+    setErrorList([]);
     if (csvFile) {
       Papa.parse(csvFile, {
         header: true,
