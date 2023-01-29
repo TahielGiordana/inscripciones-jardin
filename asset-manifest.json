@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/inscripciones-jardin/static/css/main.e25e059c.css",
+    "main.js": "/inscripciones-jardin/static/js/main.4526fabc.js",
+    "static/js/787.6d3819ff.chunk.js": "/inscripciones-jardin/static/js/787.6d3819ff.chunk.js",
+    "index.html": "/inscripciones-jardin/index.html",
+    "main.e25e059c.css.map": "/inscripciones-jardin/static/css/main.e25e059c.css.map",
+    "main.4526fabc.js.map": "/inscripciones-jardin/static/js/main.4526fabc.js.map",
+    "787.6d3819ff.chunk.js.map": "/inscripciones-jardin/static/js/787.6d3819ff.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.e25e059c.css",
+    "static/js/main.4526fabc.js"
+  ]
+}
