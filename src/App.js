@@ -5,18 +5,12 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { useState } from "react";
 import Papa from "papaparse";
 import { calcularDistancia } from "./utils";
-import { Button, Col, Container, Row } from "react-bootstrap";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faInfo,
-  faInfoCircle,
-  faMapLocationDot,
-} from "@fortawesome/free-solid-svg-icons";
+import { Col, Container, Row } from "react-bootstrap";
 import SetHomeModal from "./components/SetHomeModal";
 import InfoModal from "./components/InfoModal";
 
 const getHome = () => {
-  let home = { lat: -34.534361277085296, lon: -58.6935997561191 };
+  let home = { lat: -34.534361277085296, lon: -58.6935997561191 }; //Default home
   if (localStorage.getItem("homeLat") && localStorage.getItem("homeLon")) {
     home.lat = localStorage.getItem("homeLat");
     home.lon = localStorage.getItem("homeLon");

@@ -3,6 +3,8 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useState } from "react";
 import { Button, Container, Form, Modal } from "react-bootstrap";
 
+// Permite actualizar la ubicación del jardín ingresando las coordenadas correspondientes
+
 export default function SetHomeModal(props) {
   const [show, setShow] = useState(false);
   const [lat, setLat] = useState(0);
